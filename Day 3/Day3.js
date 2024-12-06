@@ -2,7 +2,7 @@ const fs = require("fs");
 
 let input = fs.readFileSync("/Users/akbarjon/AdventOfCode/Day 3/input.txt", "utf-8").trim();
 // console.log(input.length)
-input = input.slice(0, 567) + input.slice(571);
+// input = input.slice(0, 567) + input.slice(571);
 // console.log(input.length)
 
 input = (input).split('do()').map(a => a.split('don\'t()'[0]));
