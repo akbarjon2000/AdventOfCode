@@ -1,3 +1,5 @@
+//Creative Solutions, Clean code:
+
 const fs = require("fs");
 
 // reading rules and data preprocessing
