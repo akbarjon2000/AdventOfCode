@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 // reading the input data and preprocessing:
-let input = fs.readFileSync("/Users/akbarjon/AdventOfCode/Day6/input.txt", "utf-8").trim();
+let input = fs.readFileSync("/Users/akbarjon/AdventOfCode/Day6/small.txt", "utf-8").trim();
 input = input.split("\n");
 for(let i = 0; i < input.length; i++){
     input[i] = input[i].split("");
@@ -24,13 +24,15 @@ const DistinctPositions = (input) => {
             curCol = row.indexOf("^");
         }
     }
-    visitedArr.push([curRow, curCol]);
+    visitedArr.push(JSON.stringify([curRow, curCol]));
 
     while((curRow != rows - 1 && curRow != 0) && (curCol != cols - 1 && curCol != 0)){
         
         if(direction == 0){
             if(input[curRow - 1][curCol] != "#"){
                 // console.log(input[curRow][curCol])
+                console.log(input[curRow - 1][curCol]);
+                input[curRow - 1][curCol] = 'X'
                 curRow -= 1;
                 if(visitedArr.indexOf(JSON.stringify([curRow, curCol])) == -1){
                     visitedArr.push(JSON.stringify([curRow, curCol]));
@@ -41,6 +43,7 @@ const DistinctPositions = (input) => {
         }else if(direction == 1){
             if(input[curRow][curCol + 1] != "#"){
                 // console.log(input[curRow][curCol])
+                input[curRow][curCol + 1] = 'X'
                 curCol += 1;
                 if(visitedArr.indexOf(JSON.stringify([curRow, curCol])) == -1){
                     visitedArr.push(JSON.stringify([curRow, curCol]))
@@ -51,6 +54,7 @@ const DistinctPositions = (input) => {
         }else if(direction == 2){
             if(input[curRow + 1][curCol] != "#"){
                 // console.log(input[curRow][curCol])
+                input[curRow + 1][curCol] = 'X'
                 curRow += 1;
                 if(visitedArr.indexOf(JSON.stringify([curRow, curCol])) == -1){
                     visitedArr.push(JSON.stringify([curRow, curCol]))
@@ -61,6 +65,7 @@ const DistinctPositions = (input) => {
         }else if(direction == 3){
             if(input[curRow][curCol - 1] != "#"){
                 // console.log(input[curRow][curCol])
+                input[curRow][curCol - 1] = 'X'
                 curCol -= 1;
                 if(visitedArr.indexOf(JSON.stringify([curRow, curCol])) == -1){
                     visitedArr.push(JSON.stringify([curRow, curCol]))
@@ -72,6 +77,9 @@ const DistinctPositions = (input) => {
     }
 
     console.log(visitedArr.length);
+    console.log(visitedArr);
+    console.log(input.join("\n"));
+
     
 }
 
